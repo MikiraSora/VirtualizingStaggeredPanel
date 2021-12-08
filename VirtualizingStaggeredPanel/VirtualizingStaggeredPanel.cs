@@ -117,6 +117,22 @@ namespace MikiraSora.VirtualizingStaggeredPanel
             throw new NotImplementedException();
         }
 
+        public double? FindScrollOffsetByItem(IVirtualGridFlowPanelItemParam param)
+        {
+            var col = containers.FirstOrDefault(c => c.Children.Contains(param));
+            if (col == null)
+                return null;
+
+            var width = GridItemWidth;
+            var minBaseOffsetY = containers.OrderBy(x => x.MinOffsetY).FirstOrDefault()?.MinOffsetY ?? 0;
+
+            var y1 = col.MinOffsetY + col.Children.TakeWhile(x => x != param).Select(x => width / x.AspectRatio).Aggregate(0d, (a, b) => a + b);
+
+            var y2 = y1 - minBaseOffsetY;
+
+            return y2;
+        }
+
         public void PageUp()
         {
             this.SetVerticalOffset(this.VerticalOffset - this.viewPort.Height);

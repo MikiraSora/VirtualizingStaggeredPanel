@@ -4,7 +4,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:MikiraSora.VirtualizingStaggeredPanel"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:virtualizingstaggeredpanel="clr-namespace:MikiraSora.VirtualizingStaggeredPanel;assembly=MikiraSora.VirtualizingStaggeredPanel"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:virtualizingstaggeredpanel="clr-namespace:MikiraSora.VirtualizingStaggeredPanel;assembly=MikiraSora.VirtualizingStaggeredPanel"
     Name="controlss"
     Title="MainWindow"
     Width="800"
@@ -22,6 +23,7 @@
         <StackPanel Orientation="Horizontal">
             <Button Click="Button_Click">Append One</Button>
             <Button Margin="10,0,0,0" Click="Button_Click_1">Prepend One</Button>
+            <Button Margin="10,0,0,0" Click="Button_Click_2">Bring 20th item into view</Button>
         </StackPanel>
         <ItemsControl
             x:Name="DisplayList"

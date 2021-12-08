@@ -81,11 +81,35 @@ namespace VirtualizingStaggeredPanel.WPFTest
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            FakeImages.Insert(0,new VirtualGridFlowPanelItemParam()
+            FakeImages.Insert(0, new VirtualGridFlowPanelItemParam()
             {
                 Index = FakeImages.Count,
                 AspectRatio = 0.5
             });
+        }
+
+        static T GetChildRecursively<T>(DependencyObject root, object specifyDataCtx = default) where T : FrameworkElement
+        {
+            if (root is T d && (specifyDataCtx == default || d.DataContext == specifyDataCtx))
+                return d;
+            var c = VisualTreeHelper.GetChildrenCount(root);
+            for (int i = 0; i < c; i++)
+            {
+                var w = GetChildRecursively<T>(VisualTreeHelper.GetChild(root, i), specifyDataCtx);
+                if (w != null)
+                    return w;
+            }
+            return null;
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            var panel = GetChildRecursively<MikiraSora.VirtualizingStaggeredPanel.VirtualizingStaggeredPanel>(DisplayList,null);
+            var item = FakeImages.FirstOrDefault(x => x.Index == 20);
+
+            var scrollOffset = panel.FindScrollOffsetByItem(item);
+            if (scrollOffset.HasValue)
+                panel.ScrollOwner?.ScrollToVerticalOffset(scrollOffset.Value);
         }
     }
 }
