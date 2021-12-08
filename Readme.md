@@ -14,6 +14,7 @@
 * VirtualizingStaggeredPanel实时改变面板宽度/高度 - 支持(但可能会有显示问题)
 
 ### 食用方式
+[![](https://img.shields.io/badge/nuget-VirtualizingStaggeredPanel%20-blue)](https://www.nuget.org/packages/VirtualizingStaggeredPanel)<br>
 [Example](https://github.com/MikiraSora/VirtualizingStaggeredPanel/blob/master/VirtualizingStaggeredPanel.WPFTest/MainWindow.xaml)<br>
 |属性名|默认值|描述|
 |--|--|--|
