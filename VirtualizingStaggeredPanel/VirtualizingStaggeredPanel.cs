@@ -22,15 +22,6 @@ namespace MikiraSora.VirtualizingStaggeredPanel
             set { SetValue(GridItemWidthProperty, value); }
         }
 
-        public int GridItemMarginWidth
-        {
-            get { return (int)GetValue(GridItemMarginWidthProperty); }
-            set { SetValue(GridItemMarginWidthProperty, value); }
-        }
-
-        public static readonly DependencyProperty GridItemMarginWidthProperty =
-            DependencyProperty.Register("GridItemMarginWidth", typeof(int), typeof(VirtualizingStaggeredPanel), new PropertyMetadata(10));
-
         public static readonly DependencyProperty GridItemWidthProperty =
             DependencyProperty.Register("GridItemWidth", typeof(int), typeof(VirtualizingStaggeredPanel), new PropertyMetadata(150));
 
