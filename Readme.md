@@ -16,6 +16,8 @@
 
 ### 食用方式
 [![](https://img.shields.io/badge/nuget-VirtualizingStaggeredPanel%20-blue)](https://www.nuget.org/packages/VirtualizingStaggeredPanel)<br>
+对应的ItemsControl的ItemSource的元素类，必须是实现了的IVirtualGridFlowPanelItemParam([示例](https://github.com/MikiraSora/VirtualizingStaggeredPanel/blob/master/VirtualizingStaggeredPanel.WPFTest/VirtualGridFlowPanelItemParam.cs)).
+<br>
 [Example](https://github.com/MikiraSora/VirtualizingStaggeredPanel/blob/master/VirtualizingStaggeredPanel.WPFTest/MainWindow.xaml)<br>
 |属性名|默认值|描述|
 |--|--|--|
