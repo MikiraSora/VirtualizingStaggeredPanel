@@ -392,6 +392,7 @@ namespace MikiraSora.VirtualizingStaggeredPanel
             //step0:获取最低的偏移量，用到后面的全局y轴计算。
             var minBaseOffsetY = containers.OrderBy(x => x.MinOffsetY).FirstOrDefault()?.MinOffsetY ?? 0;
             var width = GridItemWidth;
+            var xSpace = (finalSize.Width - width * containers.Length) / (containers.Length + 1);
             //Debug.WriteLine($"called ArrangeOverride() minBaseOffsetY:{minBaseOffsetY}");
 
             foreach (UIElement uiElement in InternalChildren)
@@ -399,7 +400,7 @@ namespace MikiraSora.VirtualizingStaggeredPanel
                 if (!(elementMap.TryGetValue(uiElement, out var zz) && zz is (var param, var colIndex) && containers.ElementAtOrDefault(colIndex) is ItemLinearColumnContainer col))
                     continue;
 
-                var x = colIndex * width;
+                var x = (colIndex + 1) * xSpace + colIndex * width;
 
                 //step 1:计算出此param在此col的相对位置,得到y1
                 var y1 = col.MinOffsetY + col.Children.TakeWhile(x => x != param).Select(x => width / x.AspectRatio).Aggregate(0d, (a, b) => a + b);
