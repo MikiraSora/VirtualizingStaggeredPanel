@@ -22,6 +22,16 @@ namespace VirtualizingStaggeredPanel.WPFTest
     /// </summary>
     public partial class MainWindow : Window
     {
+        public int GridItemWidth
+        {
+            get { return (int)GetValue(GridItemWidthProperty); }
+            set { SetValue(GridItemWidthProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for GridItemWidth.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty GridItemWidthProperty =
+            DependencyProperty.Register("GridItemWidth", typeof(int), typeof(MainWindow), new PropertyMetadata(150));
+
         public ObservableCollection<VirtualGridFlowPanelItemParam> FakeImages { get; } = new ObservableCollection<VirtualGridFlowPanelItemParam>(
             new Size[] {
             new(100,200),
@@ -118,6 +128,18 @@ namespace VirtualizingStaggeredPanel.WPFTest
             var scrollOffset = panel.FindScrollOffsetByItem(item);
             if (scrollOffset.HasValue)
                 panel.ScrollOwner?.ScrollToVerticalOffset(scrollOffset.Value);
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            if (GridItemWidth == 150)
+            {
+                GridItemWidth = 250;
+            }
+            else
+            {
+                GridItemWidth = 150;
+            }
         }
     }
 }

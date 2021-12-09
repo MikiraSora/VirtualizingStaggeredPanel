@@ -24,6 +24,7 @@
             <Button Click="Button_Click">Append One</Button>
             <Button Margin="10,0,0,0" Click="Button_Click_1">Prepend One</Button>
             <Button Margin="10,0,0,0" Click="Button_Click_2">Bring 20th item into view</Button>
+            <Button Margin="10,0,0,0" Click="Button_Click_3">Switch big/small item width</Button>
         </StackPanel>
         <ItemsControl
             x:Name="DisplayList"
@@ -31,7 +32,7 @@
             ItemsSource="{Binding FakeImages}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <virtualizingstaggeredpanel:VirtualizingStaggeredPanel>
+                    <virtualizingstaggeredpanel:VirtualizingStaggeredPanel GridItemWidth="{Binding GridItemWidth}">
                     </virtualizingstaggeredpanel:VirtualizingStaggeredPanel>
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>

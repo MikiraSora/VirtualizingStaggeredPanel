@@ -23,7 +23,11 @@ namespace MikiraSora.VirtualizingStaggeredPanel
         }
 
         public static readonly DependencyProperty GridItemWidthProperty =
-            DependencyProperty.Register("GridItemWidth", typeof(int), typeof(VirtualizingStaggeredPanel), new PropertyMetadata(150));
+            DependencyProperty.Register("GridItemWidth", typeof(int), typeof(VirtualizingStaggeredPanel), new PropertyMetadata(150, (d, e) =>
+            {
+                if (d is VirtualizingStaggeredPanel p)
+                    p.InvalidateMeasure();
+            }));
 
         #endregion
 
