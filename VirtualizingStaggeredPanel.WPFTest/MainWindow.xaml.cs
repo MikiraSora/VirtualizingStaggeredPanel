@@ -68,6 +68,14 @@ namespace VirtualizingStaggeredPanel.WPFTest
         public MainWindow()
         {
             InitializeComponent();
+            for (int i = 0; i < 100000; i++)
+            {
+                FakeImages.Add(new VirtualGridFlowPanelItemParam()
+                {
+                    Index = FakeImages.Count,
+                    AspectRatio = 1
+                });
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

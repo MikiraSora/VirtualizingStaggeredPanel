@@ -46,10 +46,7 @@
             </ItemsControl.Template>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Border
-                        Width="100"
-                        Margin="5"
-                        Background="#3FFFFFFF">
+                    <Border Margin="5" Background="#3FFFFFFF">
                         <Label
                             Content="{Binding Index}"
                             FontSize="15"
