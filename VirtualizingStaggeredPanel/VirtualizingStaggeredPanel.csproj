@@ -9,9 +9,9 @@
     <Authors>MikiraSora</Authors>
     <Product>VirtualizingStaggeredPanel</Product>
     <Description>(WIP) Use VirtualizingPanel to implement StaggeredPanel</Description>
-    <AssemblyVersion>0.0.5.0</AssemblyVersion>
-    <FileVersion>0.0.5.0</FileVersion>
-    <Version>0.0.5</Version>
+    <AssemblyVersion>0.0.6.0</AssemblyVersion>
+    <FileVersion>0.0.6.0</FileVersion>
+    <Version>0.0.6</Version>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/MikiraSora/VirtualizingStaggeredPanel</PackageProjectUrl>
     <RepositoryUrl>https://github.com/MikiraSora/VirtualizingStaggeredPanel</RepositoryUrl>
