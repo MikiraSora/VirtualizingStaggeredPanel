@@ -9,7 +9,7 @@
     <Authors>MikiraSora</Authors>
     <Product>VirtualizingStaggeredPanel</Product>
     <Description>(WIP) Use VirtualizingPanel to implement StaggeredPanel</Description>
-    <Version>0.0.7</Version>
+    <Version>0.0.8</Version>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/MikiraSora/VirtualizingStaggeredPanel</PackageProjectUrl>
     <RepositoryUrl>https://github.com/MikiraSora/VirtualizingStaggeredPanel</RepositoryUrl>
