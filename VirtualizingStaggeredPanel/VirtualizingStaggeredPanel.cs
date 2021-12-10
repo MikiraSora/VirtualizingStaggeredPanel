@@ -29,6 +29,16 @@ namespace MikiraSora.VirtualizingStaggeredPanel
                     p.InvalidateMeasure();
             }));
 
+        public bool AutoDetectCollectionDeletedAndRefreshColumns
+        {
+            get { return (bool)GetValue(AutoDetectCollectionDeletedAndRefreshColumnsProperty); }
+            set { SetValue(AutoDetectCollectionDeletedAndRefreshColumnsProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for AutoDetectCollectionDeletedAndRefreshColumns.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty AutoDetectCollectionDeletedAndRefreshColumnsProperty =
+            DependencyProperty.Register("AutoDetectCollectionDeletedAndRefreshColumns", typeof(bool), typeof(VirtualizingStaggeredPanel), new PropertyMetadata(true));
+
         #endregion
 
         #region IScrollInfo
@@ -222,6 +232,8 @@ namespace MikiraSora.VirtualizingStaggeredPanel
 
             var i = -1;
             var itor = ItemSource.GetEnumerator();
+            var prev = default(IVirtualGridFlowPanelItemParam);
+            var deleteSet = new HashSet<IVirtualGridFlowPanelItemParam>();
 
             do
             {
@@ -277,13 +289,24 @@ namespace MikiraSora.VirtualizingStaggeredPanel
                 //因为可能存在超长Item导致整个visibleParams并非按1等差递增数列，可以通过此特性对相邻的Item可以直接一次StartAt
                 if (param.__ItemIndex - prevItemIndex != 1)
                 {
+                    if (param.__ItemIndex == prevItemIndex)
+                    {
+                        continue;
+                    }
                     //not next. (re)generate UIElement generator.
                     currentGeneratorStatus?.Dispose();
                     var startPosi = generator.GeneratorPositionFromIndex(param.__ItemIndex);
                     currentGeneratorStatus = generator.StartAt(startPosi, GeneratorDirection.Forward, true);
                 }
+                prevItemIndex = param.__ItemIndex;
 
                 var childElement = generator.GenerateNext(out var newlyRealized) as UIElement;
+                if (childElement is null)
+                {
+                    //ignore it.
+                    continue;
+                }
+
                 elementMap[childElement] = (param, i);
 
                 AddInternalChild(childElement);
@@ -293,7 +316,6 @@ namespace MikiraSora.VirtualizingStaggeredPanel
 
                 //测量一下
                 childElement.Measure(availableSize);
-                prevItemIndex = param.__ItemIndex;
             }
 
             currentGeneratorStatus?.Dispose();
@@ -308,6 +330,16 @@ namespace MikiraSora.VirtualizingStaggeredPanel
 
             //返回可视大小(ViewPort)
             return size;
+        }
+
+
+        /// <summary>
+        /// 强制刷新布局和物品缓存
+        /// </summary>
+        public void ForceRefreshContainItems()
+        {
+            containers = null;
+            InvalidateMeasure();
         }
 
         private void UpdateScrollInfo(Size availableSize)
@@ -385,6 +417,8 @@ namespace MikiraSora.VirtualizingStaggeredPanel
 
         protected override Size ArrangeOverride(Size finalSize)
         {
+            if (containers is null)
+                return finalSize;
             /**
              
               通常虚拟化的ArrangeOverride()的职责:

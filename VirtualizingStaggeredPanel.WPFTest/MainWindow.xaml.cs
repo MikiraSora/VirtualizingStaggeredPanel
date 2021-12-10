@@ -78,6 +78,7 @@ namespace VirtualizingStaggeredPanel.WPFTest
         public MainWindow()
         {
             InitializeComponent();
+            /*
             for (int i = 0; i < 100000; i++)
             {
                 FakeImages.Add(new VirtualGridFlowPanelItemParam()
@@ -86,6 +87,7 @@ namespace VirtualizingStaggeredPanel.WPFTest
                     AspectRatio = 1
                 });
             }
+            */
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -140,6 +142,13 @@ namespace VirtualizingStaggeredPanel.WPFTest
             {
                 GridItemWidth = 150;
             }
+        }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            FakeImages.Clear();
+            var panel = GetChildRecursively<MikiraSora.VirtualizingStaggeredPanel.VirtualizingStaggeredPanel>(DisplayList, null);
+            panel.ForceRefreshContainItems();
         }
     }
 }

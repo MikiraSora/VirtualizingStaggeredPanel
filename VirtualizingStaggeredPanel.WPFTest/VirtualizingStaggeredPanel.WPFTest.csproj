@@ -10,11 +10,4 @@
     <ProjectReference Include="..\VirtualizingStaggeredPanel\VirtualizingStaggeredPanel.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Page Update="MainWindow2.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-      <SubType>Designer</SubType>
-    </Page>
-  </ItemGroup>
-
 </Project>

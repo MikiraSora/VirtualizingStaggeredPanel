@@ -20,12 +20,15 @@
             <RowDefinition Height="*">
             </RowDefinition>
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal">
-            <Button Click="Button_Click">Append One</Button>
-            <Button Margin="10,0,0,0" Click="Button_Click_1">Prepend One</Button>
-            <Button Margin="10,0,0,0" Click="Button_Click_2">Bring 20th item into view</Button>
-            <Button Margin="10,0,0,0" Click="Button_Click_3">Switch big/small item width</Button>
-        </StackPanel>
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
+            <StackPanel Orientation="Horizontal">
+                <Button Click="Button_Click">Append One</Button>
+                <Button Margin="10,0,0,0" Click="Button_Click_1">Prepend One</Button>
+                <Button Margin="10,0,0,0" Click="Button_Click_2">Bring 20th item into view</Button>
+                <Button Margin="10,0,0,0" Click="Button_Click_3">Switch big/small item width</Button>
+                <Button Margin="10,0,0,0" Click="Button_Click_4">Clear all items</Button>
+            </StackPanel>
+        </ScrollViewer>
         <ItemsControl
             x:Name="DisplayList"
             Grid.Row="1"
