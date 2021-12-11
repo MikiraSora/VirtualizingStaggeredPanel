@@ -218,7 +218,7 @@ namespace MikiraSora.VirtualizingStaggeredPanel
                 }
             }
 
-            foreach (var newPrepended in ItemSource.TakeWhile(x => !x.__HasInserted))
+            foreach (var newPrepended in ItemSource.TakeWhile(x => !x.__HasInserted).Reverse())
             {
                 newPrepended.__HasInserted = false;
                 //处理前面加的

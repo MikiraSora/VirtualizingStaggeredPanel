@@ -16,6 +16,6 @@ namespace VirtualizingStaggeredPanel.WPFTest
         public bool __HasInserted { get; set; }
         public int __ItemIndex { get; set; }
 
-        public override string ToString() => $"ItemIndex:{((IVirtualGridFlowPanelItemParam)this).__ItemIndex} AspectRatio:{AspectRatio}";
+        public override string ToString() => $"Index:{Index} __ItemIndex:{__ItemIndex} AspectRatio:{AspectRatio}";
     }
 }
