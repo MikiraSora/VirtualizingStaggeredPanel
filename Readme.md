@@ -9,7 +9,6 @@
 * ItemControls滚动 - 支持(但因为VirtualizingStaggeredPanel实现了IScrollInfo,因此ItemsControls需要[改改](https://github.com/MikiraSora/VirtualizingStaggeredPanel/blob/master/VirtualizingStaggeredPanel.WPFTest/MainWindow.xaml#L37),且ItemControls不能被ScrollViewer包围)
 * ItemControls实时添加Item到列表尾部 - 支持
 * ItemControls实时添加Item到列表头部 - 支持(但可能会有显示问题)
-* ItemControls实时删除Item - 支持(但可能会有显示问题)
 * Panel滚动到指定的Item上 - 支持([示例](https://github.com/MikiraSora/VirtualizingStaggeredPanel/blob/master/VirtualizingStaggeredPanel.WPFTest/MainWindow.xaml.cs#L107))
 * 单独使用VirtualizingStaggeredPanel - 暂时不支持
 * VirtualizingStaggeredPanel实时改变面板宽度/高度 - 支持(但可能会有显示问题)
